@@ -3,7 +3,7 @@ import { Container } from '@material-ui/core';
 import { BASE_URL, API_KEY, API_KEY_QUERY_PARAM, SOL_QUERY_PARAM, SOL_DATE } from './constants';
 import { ImagesView } from './ImagesView'
 import { Header } from './Header';
-import {LoadingSpinner} from './LoadingSpinner'
+import { LoadingSpinner } from './LoadingSpinner'
 
 export interface IRoverPhoto {
     id: number
@@ -11,7 +11,7 @@ export interface IRoverPhoto {
     camera: ICameraInfo
     img_src: string
     earth_date: string
-    rover: IRoverInfo    
+    rover: IRoverInfo
 }
 
 interface ICameraInfo {
@@ -41,7 +41,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
         return new Promise(resolve => setTimeout(resolve, milliseconds))
     }
 
-    const wait = async (milliseconds = 2000)=> {
+    const wait = async (milliseconds = 2000) => {
         await sleep(milliseconds)
         setIsLoading(false)
     }
@@ -58,6 +58,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
             const photos: IRoverPhoto[] = data['photos']
             setPhotos(photos)
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
